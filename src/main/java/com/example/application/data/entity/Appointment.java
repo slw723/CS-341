@@ -8,7 +8,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Version;
 
 @MappedSuperclass
-public abstract class AbstractEntity {
+public abstract class Appointment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgenerator")
@@ -41,7 +41,7 @@ public abstract class AbstractEntity {
 
     @Override
     public boolean equals(Object obj) {
-        if (!(obj instanceof AbstractEntity that)) {
+        if (!(obj instanceof Appointment that)) {
             return false; // null or not an AbstractEntity class
         }
         if (getId() != null) {

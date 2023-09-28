@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-public class Contact extends AbstractEntity {
+public class ServiceProvider extends Appointment {
 
     @NotEmpty
     private String firstName = "";
@@ -21,11 +21,11 @@ public class Contact extends AbstractEntity {
     @JoinColumn(name = "company_id")
     @NotNull
     @JsonIgnoreProperties({"employees"})
-    private Company company;
+    private User company;
 
     @NotNull
     @ManyToOne
-    private Status status;
+    private Admin status;
 
     @Email
     @NotEmpty
@@ -52,19 +52,19 @@ public class Contact extends AbstractEntity {
         this.lastName = lastName;
     }
 
-    public Company getCompany() {
+    public User getCompany() {
         return company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(User company) {
         this.company = company;
     }
 
-    public Status getStatus() {
+    public Admin getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(Admin status) {
         this.status = status;
     }
 

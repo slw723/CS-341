@@ -3,14 +3,14 @@ package com.example.application.data.entity;
 import jakarta.persistence.Entity;
 
 @Entity
-public class Status extends AbstractEntity {
+public class Admin extends Appointment {
     private String name;
 
-    public Status() {
+    public Admin() {
 
     }
 
-    public Status(String name) {
+    public Admin(String name) {
         this.name = name;
     }
 

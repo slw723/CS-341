@@ -8,13 +8,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
-public class Company extends AbstractEntity {
+public class User extends Appointment {
     @NotBlank
     private String name;
 
     @OneToMany(mappedBy = "company")
     @Nullable
-    private List<Contact> employees = new LinkedList<>();
+    private List<ServiceProvider> employees = new LinkedList<>();
 
     public String getName() {
         return name;
@@ -24,11 +24,11 @@ public class Company extends AbstractEntity {
         this.name = name;
     }
 
-    public List<Contact> getEmployees() {
+    public List<ServiceProvider> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(List<Contact> employees) {
+    public void setEmployees(List<ServiceProvider> employees) {
         this.employees = employees;
     }
 }

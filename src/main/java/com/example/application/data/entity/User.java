@@ -9,16 +9,11 @@ import java.util.List;
 
 @Entity
 public class User extends Appointment {
-    @NotBlank
     private String firstName;
     private String lastName;
     private String email;
     private String password;
     private int phoneNumber;
-
-    @OneToMany(mappedBy = "company")
-    @Nullable
-    private List<ServiceProvider> employees = new LinkedList<>();
 
     public User (String first, String last, String emailAddress, String pw, int phone) {
         firstName = first;
@@ -66,13 +61,5 @@ public class User extends Appointment {
 
     public void setPhoneNumber(int phone) {
         phoneNumber = phone;
-    }
-
-    public List<ServiceProvider> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<ServiceProvider> employees) {
-        this.employees = employees;
     }
 }

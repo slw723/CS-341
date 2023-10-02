@@ -3,14 +3,21 @@ package com.example.application.data.entity;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 public class User extends Appointment {
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String lastName;
+    @Email
+    @NotEmpty
     private String email;
     private String password;
     private int phoneNumber;

@@ -1,25 +1,24 @@
 package com.example.application.data.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
-public class Admin extends Appointment {
-    private String name;
+public class Admin {
+    @Id
+    private String userId;
 
-    public Admin() {
+    @NotEmpty
+    private String password;
 
+
+    public Admin(String id, String pw){
+        userId = id;
+        password = pw;
     }
 
-    public Admin(String name) {
-        this.name = name;
-    }
+    public Admin() { //empty constructor
 
-    public String getName() {
-        return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
 }

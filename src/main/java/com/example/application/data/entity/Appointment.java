@@ -1,52 +1,86 @@
 package com.example.application.data.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.SequenceGenerator;
-import jakarta.persistence.Version;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
-@MappedSuperclass
-public abstract class Appointment {
+import java.time.LocalDate;
+import java.time.LocalTime;
 
+@Entity
+public class Appointment {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "idgenerator")
-    // The initial value is to account for data.sql demo data ids
-    @SequenceGenerator(name = "idgenerator", initialValue = 1000)
-    private Long id;
+    private String apptId;
+    @NotEmpty
+    private LocalDate date;
+    @NotEmpty
+    private LocalTime time;
 
-    @Version
-    private int version;
+    @NotEmpty
+    private LocalTime duration;
 
-    public Long getId() {
-        return id;
+    private String type;
+
+    @NotEmpty
+    private Boolean booked;
+
+    public Appointment(){ //empty constructor
+
+    }
+    public Appointment(String id, LocalDate date, LocalTime time, LocalTime duration, String type, Boolean booked){
+        apptId = id;
+        this.date = date;
+        this.time = time;
+        this.duration = duration;
+        this.type = type;
+        this.booked = booked;
+    }
+    public String getApptId() {
+        return apptId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setApptId(String apptId) {
+        this.apptId = apptId;
     }
 
-    public int getVersion() {
-        return version;
+    public LocalDate getDate() {
+        return date;
     }
 
-    @Override
-    public int hashCode() {
-        if (getId() != null) {
-            return getId().hashCode();
-        }
-        return super.hashCode();
+    public void setDate (LocalDate date) {
+        this.date = date;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (!(obj instanceof Appointment that)) {
-            return false; // null or not an AbstractEntity class
-        }
-        if (getId() != null) {
-            return getId().equals(that.getId());
-        }
-        return super.equals(that);
+
+    public LocalTime getTime() {
+        return time;
     }
+
+    public void setTime (LocalTime time) {
+        this.time = time;
+    }
+
+    public LocalTime getDuration() {
+        return duration;
+    }
+
+    public void setDuration (LocalTime duration) {
+        this.duration = duration;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType (String type) {
+        this.type = type;
+    }
+
+    public Boolean getBooked() {
+        return booked;
+    }
+
+    public void setBooked (Boolean booked) {
+        this.booked = booked;
+    }
+
 }
